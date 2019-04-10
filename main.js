@@ -39,6 +39,7 @@ function main(){  // funcion para tener las funciones locales de aqui se ejecuta
 
     const game = new Game(canvasElement);
     game.startLoop();
+    game.setGameOverCallBack(buildGameOverScreen);
 
     document.addEventListener('keydown', function(event){
 
