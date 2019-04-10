@@ -9,6 +9,8 @@ function Game(canvas) {
 
 Game.prototype.startLoop = function(){
 
+  this.player = new Player(this.canvas);
+
   const loop = () => { // por el scope con set timers hay que utilizar binding o arrow functions
     this.clearCanvas();
     this.updateCanvas();
@@ -25,9 +27,9 @@ Game.prototype.clearCanvas = function (){
 }
 
 Game.prototype.updateCanvas = function(){
-
+  this.player.update();
 }
 
 Game.prototype.drawCanvas = function(){
-
+  this.player.draw();
 }

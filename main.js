@@ -1,6 +1,6 @@
 'use strict';
 
-function main(){
+function main(){  // funcion para tener las funciones locales de aqui se ejecuta tot
 
   const mainElement = document.querySelector('main');
 
@@ -19,8 +19,6 @@ function main(){
 
     const startButton = document.querySelector('.start-button');
     startButton.addEventListener('click', buildGameScreen);
-
-
 
   }
   function buildGameScreen(){
@@ -42,7 +40,22 @@ function main(){
     const game = new Game(canvasElement);
     game.startLoop();
 
-    setTimeout(buildGameOverScreen,3000);
+    document.addEventListener('keydown', function(event){
+
+      if(event.keyCode === 38){
+        game.player.setDirection(-1);
+      }else if(event.keyCode === 40){
+        game.player.setDirection(1);
+      }
+    })
+
+    document.addEventListener('keyup',function(event){
+      if(event.keyCode === 38 || event.keyCode === 40 ){
+        game.player.setDirection(0);
+      }
+    })
+
+   // setTimeout(buildGameOverScreen,3000);
     
   }
   function buildGameOverScreen(){
